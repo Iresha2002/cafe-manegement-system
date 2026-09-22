@@ -1,4 +1,6 @@
+
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 
 const userSchema = new mongoose.Schema(
   {
@@ -29,6 +31,26 @@ const userSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+
+// Hash password before saving to database
+userSchema.pre('save', async function () {
+  // Only hash the password if it has been modified (or is new)
+  if (!this.isModified('password')) {
+    return;
+  }
+
+  // Generate salt (10 rounds is the industry standard)
+  const salt = await bcrypt.genSalt(10);
+  // Hash the password with the salt
+  this.password = await bcrypt.hash(this.password, salt);
+});
+
+// Custom method to compare entered password with hashed password
+userSchema.methods.matchPassword = async function (enteredPassword) {
+  return await bcrypt.compare(enteredPassword, this.password);
+};
+
+
 
 const User = mongoose.model('User', userSchema);
 
