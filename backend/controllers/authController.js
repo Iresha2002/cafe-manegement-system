@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const generateToken = require('../utils/generateToken');
 
 // @desc    Register a new user
 // @route   POST /api/auth/register
@@ -38,6 +39,7 @@ const registerUser = async (req, res) => {
       name: user.name,
       email: user.email,
       role: user.role,
+      token: generateToken(user._id, user.role),
       message: 'User registered successfully',
     });
 
