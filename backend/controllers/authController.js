@@ -50,6 +50,40 @@ const registerUser = async (req, res) => {
   }
 };
 
+// @desc    Authenticate user & get token (Login)
+// @route   POST /api/auth/login
+// @access  Public
+const loginUser = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    // 1. Validate input
+    if (!email || !password) {
+      return res.status(400).json({ message: 'Please provide email and password' });
+    }
+
+    // 2. Find user in MongoDB
+    const user = await User.findOne({ email });
+
+    // 3. Check if user exists AND password matches
+    if (user && (await user.matchPassword(password))) {
+      res.status(200).json({
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        token: generateToken(user._id, user.role),
+        message: 'Login successful',
+      });
+    } else {
+      res.status(401).json({ message: 'Invalid email or password' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   registerUser,
+  loginUser,
 };
