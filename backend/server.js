@@ -9,10 +9,10 @@ const authRoutes = require('./routes/authRoutes');
 
 // Connect to MongoDB
 connectDB();
-
+app.use(cors());
 // Middleware to parse incoming JSON in request bodies
 app.use(express.json());
-app.use(cors());
+
 // Use the authentication routes
 app.use('/api/auth', authRoutes);
 

@@ -83,7 +83,15 @@ const loginUser = async (req, res) => {
   }
 };
 
+// @desc    Get current user profile
+// @route   GET /api/auth/me
+// @access  Private
+const getMe = async (req, res) => {
+  res.status(200).json(req.user);
+};
+
 module.exports = {
   registerUser,
   loginUser,
+  getMe,
 };
