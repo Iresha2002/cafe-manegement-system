@@ -1,5 +1,5 @@
 const express = require('express');
-
+const cors = require('cors');
 
 require('dotenv').config();
 const MONGO_URI = process.env.MONGO_URI;
@@ -12,7 +12,7 @@ connectDB();
 
 // Middleware to parse incoming JSON in request bodies
 app.use(express.json());
-
+app.use(cors());
 // Use the authentication routes
 app.use('/api/auth', authRoutes);
 
