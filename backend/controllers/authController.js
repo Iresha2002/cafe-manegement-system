@@ -12,11 +12,37 @@ const registerUser = async (req, res) => {
       return res.status(400).json({ message: 'Please provide name, email, and password' });
     }
 
-    // Send back what we received just to verify it works!
-    res.status(200).json({
-      message: 'Registration endpoint hit successfully!',
-      receivedData: { name, email, role },
+     // 2. Check if user already exists in database
+    const userExists = await User.findOne({ email });
+    if (userExists) {
+      return res.status(400).json({ message: 'User already exists with this email' });
+    }
+
+
+    // // Send back what we received just to verify it works!
+    // res.status(200).json({
+    //   message: 'Registration endpoint hit successfully!',
+    //   receivedData: { name, email, role },
+    // });
+    // 3. Create the user in MongoDB
+    const user = await User.create({
+      name,
+      email,
+      password,
+      role,
     });
+
+    // 4. Send back the newly created user (without password!)
+    res.status(201).json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+      message: 'User registered successfully',
+    });
+
+
+
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
