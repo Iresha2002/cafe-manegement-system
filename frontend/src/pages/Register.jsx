@@ -48,13 +48,14 @@ const Register = () => {
         
         {/* LEFT SIDE */}
         <div 
-          className="relative hidden md:flex flex-col justify-between p-10 text-white"
+          className="relative hidden md:flex flex-col p-10 text-white"
           style={{
             backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.75)), url(${cafeBg})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
         >
+          {/* Top: Logo (Center) */}
           <div className="text-center">
             <div className="flex items-center justify-center gap-2 mb-2">
               <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
@@ -65,9 +66,12 @@ const Register = () => {
             <p className="text-xs tracking-widest text-gray-300">MANAGE · SERVE · GROW</p>
           </div>
 
-          <div className="flex items-center gap-3 text-xs">
-            <div className="w-8 h-0.5 bg-white/50"></div>
-            <span className="text-gray-300 tracking-wider">Your All-in-One Cafe Management System</span>
+          {/* Middle: Tagline (Center of the panel) */}
+          <div className="text-center mt-[550px]">
+            <p className="text-lg font-serif text-white/90 leading-snug">
+              Better Coffee<br />Better Business
+            </p>
+            <div className="w-12 h-0.5 bg-white/50 mx-auto mt-4"></div>
           </div>
         </div>
 
@@ -226,7 +230,7 @@ const Register = () => {
           </button>
 
           <div className="mt-6 text-right">
-            <p className="text-2xl font-serif italic text-green-900 opacity-60">
+            <p className="text-2xl font-serif text-green-900 opacity-60">
               Good Food<br />Better Mood
             </p>
           </div>

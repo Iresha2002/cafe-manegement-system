@@ -37,13 +37,14 @@ const Login = () => {
         
         {/* LEFT SIDE - Cafe Image */}
         <div 
-          className="relative hidden md:flex flex-col justify-between p-10 text-white"
+          className="relative hidden md:flex flex-col p-10 text-white"
           style={{
             backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.75)), url(${cafeBg})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
         >
+          {/* Top: Logo (Center) */}
           <div className="text-center">
             <div className="flex items-center justify-center gap-2 mb-2">
               <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
@@ -54,17 +55,18 @@ const Login = () => {
             <p className="text-xs tracking-widest text-gray-300">MANAGE · SERVE · GROW</p>
           </div>
 
-          {/* Bottom: Footer */}
-          <div className="flex items-center gap-3 text-xs">
-            <div className="w-8 h-0.5 bg-white/50"></div>
-            <span className="text-gray-300 tracking-wider">Your All-in-One Cafe Management System</span>
+          {/* Middle: Tagline (Center of the panel) */}
+          <div className="text-center mt-[550px]">
+            <p className="text-lg font-serif text-white/90 leading-snug">
+              Better Coffee<br />Better Business
+            </p>
+            <div className="w-12 h-0.5 bg-white/50 mx-auto mt-4"></div>
           </div>
         </div>
 
         {/* RIGHT SIDE - Login Form */}
         <div className="p-8 md:p-12 flex flex-col justify-center bg-[#fafaf7]">
           
-          {/* Top link */}
           <div className="text-right text-sm text-gray-500 mb-8">
             Don't have an account?{' '}
             <Link to="/register" className="font-semibold text-gray-800 hover:text-green-800">
@@ -72,20 +74,17 @@ const Login = () => {
             </Link>
           </div>
 
-          {/* Heading */}
           <div className="mb-8">
             <h1 className="text-4xl font-bold text-gray-900 mb-2">Welcome Back!</h1>
             <p className="text-gray-500 text-sm">Login to your account</p>
           </div>
 
-          {/* Error */}
           {error && (
             <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-4 text-sm">
               {error}
             </div>
           )}
 
-          {/* Form */}
           <form onSubmit={handleLogin} className="space-y-4">
             {/* Email */}
             <div className="relative">
@@ -146,22 +145,19 @@ const Login = () => {
             </button>
           </form>
 
-          {/* Divider */}
           <div className="flex items-center gap-4 my-6">
             <div className="flex-1 h-px bg-gray-200"></div>
             <span className="text-xs text-gray-400">or</span>
             <div className="flex-1 h-px bg-gray-200"></div>
           </div>
 
-          {/* Google Button */}
           <button className="w-full flex items-center justify-center gap-3 border border-gray-200 bg-white py-3 rounded-xl hover:bg-gray-50 transition">
             <span className="text-lg">🔍</span>
             <span className="text-sm font-medium text-gray-700">Continue with Google</span>
           </button>
 
-          {/* Bottom deco */}
           <div className="mt-8 text-right">
-            <p className="text-2xl font-serif italic text-green-900 opacity-60">
+            <p className="text-2xl font-serif text-green-900 opacity-60">
               Good Food<br />Better Mood
             </p>
           </div>
