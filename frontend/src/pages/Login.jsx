@@ -39,7 +39,7 @@ const Login = () => {
         <div 
           className="relative hidden md:flex flex-col p-10 text-white"
           style={{
-            backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.75)), url(${cafeBg})`,
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url(${cafeBg})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
