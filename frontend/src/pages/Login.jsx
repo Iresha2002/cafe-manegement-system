@@ -44,24 +44,14 @@ const Login = () => {
             backgroundPosition: 'center',
           }}
         >
-          {/* Top: Logo */}
-          <div>
-            <div className="flex items-center gap-2 mb-2">
+          <div className="text-center">
+            <div className="flex items-center justify-center gap-2 mb-2">
               <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
                 <span className="text-xl">☕</span>
               </div>
               <span className="text-2xl font-serif font-semibold">CafeManager</span>
             </div>
-            <p className="text-xs tracking-widest text-gray-300 ml-12">MANAGE · SERVE · GROW</p>
-          </div>
-
-          {/* Middle: Tagline */}
-          <div className="text-center">
-            <h2 className="text-3xl font-serif leading-snug">
-              Better Coffee<br />
-              Better Business
-            </h2>
-            <div className="w-12 h-0.5 bg-white/50 mx-auto mt-4"></div>
+            <p className="text-xs tracking-widest text-gray-300">MANAGE · SERVE · GROW</p>
           </div>
 
           {/* Bottom: Footer */}
