@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import api from '../services/api';
 import cafeBg from '../assets/cafe-bg.jpg';
+import coffeeCup from '../assets/coffee-cup.png';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -33,48 +34,57 @@ const Login = () => {
 
   return (
     <div className="min-h-screen bg-[#f5f5f0] flex items-center justify-center p-4">
-      <div className="bg-white rounded-3xl shadow-2xl overflow-hidden w-full max-w-6xl grid md:grid-cols-2">
-        
-        {/* LEFT SIDE - Cafe Image */}
-        <div 
+      <div className="bg-white rounded-3xl shadow-2xl overflow-hidden w-full max-w-6xl grid md:grid-cols-2 min-h-[600px]">
+
+        {/* LEFT SIDE */}
+        <div
           className="relative hidden md:flex flex-col p-10 text-white"
           style={{
-            backgroundImage: `linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url(${cafeBg})`,
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.35)), url(${cafeBg})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
         >
-          {/* Top: Logo (Center) */}
+          {/* Top: Logo */}
           <div className="text-center">
-            <div className="flex items-center justify-center gap-2 mb-2">
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                <span className="text-xl">☕</span>
-              </div>
-              <span className="text-2xl font-serif font-semibold">CafeManager</span>
+            <div className="w-10 h-10 mx-auto mb-3 flex items-center justify-center">
+              <img src={coffeeCup} alt="Coffee Cup" className="w-full h-full object-contain drop-shadow-lg" />
             </div>
+            <h1 className="text-2xl font-serif font-semibold mb-1">CafeManager</h1>
             <p className="text-xs tracking-widest text-gray-300">MANAGE · SERVE · GROW</p>
           </div>
 
-          {/* Middle: Tagline (Center of the panel) */}
-          <div className="text-center mt-[550px]">
-            <p className="text-lg font-serif text-white/90 leading-snug">
-              Better Coffee<br />Better Business
-            </p>
-            <div className="w-12 h-0.5 bg-white/50 mx-auto mt-4"></div>
+          {/* Bottom: Wave */}
+          <div className="relative -mx-10 -mb-10 mt-auto">
+            <div className="relative h-28">
+              <svg
+                className="absolute bottom-0 left-0 w-full h-full"
+                viewBox="0 0 500 100"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M0,60 C150,100 350,20 500,60 L500,100 L0,100 Z"
+                  fill="#e8f5e9"
+                />
+              </svg>
+              <div className="absolute bottom-3 right-8 text-2xl opacity-70 z-10">
+                🌿
+              </div>
+            </div>
           </div>
         </div>
 
         {/* RIGHT SIDE - Login Form */}
-        <div className="p-8 md:p-12 flex flex-col justify-center bg-[#fafaf7]">
-          
-          <div className="text-right text-sm text-gray-500 mb-8">
+        <div className="p-6 md:p-10 flex flex-col bg-[#fafaf7]">
+
+          <div className="text-right text-sm text-gray-500 mb-6">
             Don't have an account?{' '}
             <Link to="/register" className="font-semibold text-gray-800 hover:text-green-800">
               Create one
             </Link>
           </div>
 
-          <div className="mb-8">
+          <div className="mt-8 mb-6">
             <h1 className="text-4xl font-bold text-gray-900 mb-2">Welcome Back!</h1>
             <p className="text-gray-500 text-sm">Login to your account</p>
           </div>
@@ -95,7 +105,7 @@ const Login = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 placeholder="Email Address"
-                className="w-full pl-12 pr-4 py-3.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-700 focus:border-transparent outline-none bg-white transition"
+                className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-700 focus:border-transparent outline-none bg-white transition"
               />
             </div>
 
@@ -108,7 +118,7 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 placeholder="Password"
-                className="w-full pl-12 pr-12 py-3.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-700 focus:border-transparent outline-none bg-white transition"
+                className="w-full pl-12 pr-12 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-700 focus:border-transparent outline-none bg-white transition"
               />
               <button
                 type="button"
@@ -139,28 +149,11 @@ const Login = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-green-900 hover:bg-green-800 text-white font-semibold py-3.5 rounded-xl transition flex items-center justify-center gap-2 disabled:opacity-60"
+              className="w-full bg-green-900 hover:bg-green-800 text-white font-semibold py-3 rounded-xl transition flex items-center justify-center gap-2 disabled:opacity-60"
             >
               {loading ? 'Logging in...' : <>Login <span>→</span></>}
             </button>
           </form>
-
-          <div className="flex items-center gap-4 my-6">
-            <div className="flex-1 h-px bg-gray-200"></div>
-            <span className="text-xs text-gray-400">or</span>
-            <div className="flex-1 h-px bg-gray-200"></div>
-          </div>
-
-          <button className="w-full flex items-center justify-center gap-3 border border-gray-200 bg-white py-3 rounded-xl hover:bg-gray-50 transition">
-            <span className="text-lg">🔍</span>
-            <span className="text-sm font-medium text-gray-700">Continue with Google</span>
-          </button>
-
-          <div className="mt-8 text-right">
-            <p className="text-2xl font-serif text-green-900 opacity-60">
-              Good Food<br />Better Mood
-            </p>
-          </div>
         </div>
       </div>
     </div>
