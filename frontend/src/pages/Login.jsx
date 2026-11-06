@@ -77,11 +77,16 @@ const Login = () => {
         {/* RIGHT SIDE - Login Form */}
         <div className="p-6 md:p-10 flex flex-col bg-[#fafaf7]">
 
-          <div className="text-right text-sm text-gray-500 mb-6">
-            Don't have an account?{' '}
+          <div className="flex items-center justify-between gap-3 flex-wrap text-sm text-gray-500 mb-6">
+            <Link to="/" className="inline-flex items-center gap-1.5 font-semibold text-green-800 hover:text-green-900 transition">
+              <span aria-hidden="true">←</span> Back to Home
+            </Link>
+            <span>
+              Don't have an account?{' '}
             <Link to="/register" className="font-semibold text-gray-800 hover:text-green-800">
               Create one
             </Link>
+            </span>
           </div>
 
           <div className="mt-8 mb-6">
