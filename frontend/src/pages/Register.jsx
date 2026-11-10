@@ -88,11 +88,16 @@ const Register = () => {
         {/* RIGHT SIDE - Register Form */}
         <div className="p-6 md:p-8 flex flex-col justify-center bg-[#fafaf7]">
 
-          <div className="text-right text-sm text-gray-500 mb-4">
-            Already have an account?{' '}
+          <div className="flex items-center justify-between gap-3 flex-wrap text-sm text-gray-500 mb-4">
+            <Link to="/" className="inline-flex items-center gap-1.5 font-semibold text-green-800 hover:text-green-900 transition">
+              <span aria-hidden="true">←</span> Back to Home
+            </Link>
+            <span>
+              Already have an account?{' '}
             <Link to="/login" className="font-semibold text-gray-800 hover:text-green-800">
               Login
             </Link>
+            </span>
           </div>
 
           <div className="mb-5">
